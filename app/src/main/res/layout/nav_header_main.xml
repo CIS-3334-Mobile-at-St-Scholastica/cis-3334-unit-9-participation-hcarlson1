@@ -32,4 +32,5 @@
         android:layout_height="wrap_content"
         android:text="Keep in touch with your study partners" />
 
+
 </LinearLayout>
