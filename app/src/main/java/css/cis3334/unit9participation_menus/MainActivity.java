@@ -1,5 +1,7 @@
 package css.cis3334.unit9participation_menus;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import static java.net.Proxy.Type.HTTP;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -70,8 +74,52 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
+        else if (id == R.id.action_add) {
+            Snackbar.make(getWindow().getDecorView(), "Adding study mates is not available yet.", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null)
+                    .show();
+            return true;
+        }
+        else if (id == R.id.action_delete) {
+            Snackbar.make(getWindow().getDecorView(), "Deleting a study mate is not available yet.", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null)
+                    .show();
+            return true;
+        }
+        else if (id == R.id.action_email) {
+            String[] addresses = {"css.edu"};
+            String subject = "";
+
+            composeEmail(addresses,subject);
+            return true;
+        }
+        else if (id == R.id.action_txt_message) {
+            String message = "";
+            Uri attachment = null;
+            composeMmsMessage(message, attachment);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void composeEmail(String[] addresses, String subject) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("*/*");
+        intent.putExtra(Intent.EXTRA_EMAIL, addresses);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
+    public void composeMmsMessage(String message, Uri attachment) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setData(Uri.parse("smsto:"));  // This ensures only SMS apps respond
+        intent.putExtra("sms_body", message);
+        intent.putExtra(Intent.EXTRA_STREAM, attachment);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
