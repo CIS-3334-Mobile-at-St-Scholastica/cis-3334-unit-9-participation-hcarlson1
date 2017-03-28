@@ -72,6 +72,8 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(settingsIntent);
             return true;
         }
         else if (id == R.id.action_add) {
@@ -140,6 +142,31 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
+        }  else if (id == R.id.action_settings) {
+            Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(settingsIntent);
+            return true;
+        }  else if (id == R.id.action_add) {
+            Snackbar.make(getWindow().getDecorView(), "Adding study mates is not available yet.", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null)
+                    .show();
+            return true;
+        }  else if (id == R.id.action_delete) {
+            Snackbar.make(getWindow().getDecorView(), "Deleting a study mate is not available yet.", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null)
+                    .show();
+            return true;
+        }  else if (id == R.id.action_email) {
+            String[] addresses = {"css.edu"};
+            String subject = "";
+
+            composeEmail(addresses,subject);
+            return true;
+        } else if (id == R.id.action_txt_message) {
+            String message = "";
+            Uri attachment = null;
+            composeMmsMessage(message, attachment);
+            return true;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

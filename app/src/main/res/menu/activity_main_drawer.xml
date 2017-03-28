@@ -30,26 +30,35 @@
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Send" />
+        </menu>
+    </item>
+    <item android:title="Menu items">
+        <menu>
             <item
-                android:id="@+id/nav_add"
-                android:icon="@drawable/ic_menu_add"
-                android:title="Add" />
+                android:id="@+id/action_settings"
+                android:orderInCategory="100"
+                android:title="@string/action_settings"
+                android:icon="@drawable/ic_action_settings" />
             <item
-                android:id="@+id/nav_delete"
-                android:icon="@drawable/ic_menu_delete"
-                android:title="Delete" />
+                android:id="@+id/action_add"
+                android:orderInCategory="200"
+                android:title="@string/action_add"
+                android:icon="@drawable/ic_action_add" />
             <item
-                android:id="@+id/nav_settings"
-                android:icon="@drawable/ic_menu_settings"
-                android:title="Settings" />
+                android:id="@+id/action_delete"
+                android:orderInCategory="300"
+                android:title="@string/action_delete"
+                android:icon="@drawable/ic_action_delete"/>
             <item
-                android:id="@+id/nav_email"
-                android:icon="@drawable/ic_menu_email"
-                android:title="Email" />
+                android:id="@+id/action_email"
+                android:orderInCategory="500"
+                android:title="@string/action_email"
+                android:icon="@drawable/ic_action_email"/>
             <item
-                android:id="@+id/nav_SMS"
-                android:icon="@drawable/ic_menu_SMS"
-                android:title="SMS" />
+                android:id="@+id/action_SMS"
+                android:orderInCategory="100"
+                android:title="@string/action_SMS"
+                android:icon="@drawable/ic_action_sms" />
         </menu>
     </item>
 
